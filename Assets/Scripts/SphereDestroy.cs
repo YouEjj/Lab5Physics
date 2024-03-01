@@ -16,16 +16,30 @@ public class SphereDestroy : MonoBehaviour
         
     }
     public GameObject sphere;
+    public GameObject genblo;
+    public GameObject cubeHolder;
     //public GameObject cubeHolder;
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "prinPlan")
         {
-            Debug.Log("Delete this Sphere");
+            //Debug.Log("Delete this Sphere");
             Destroy(this.gameObject);
+            Destroy(GameObject.FindGameObjectWithTag("gen"));
+            Destroy(GameObject.FindGameObjectWithTag("Holder"));
 
-            Instantiate(sphere, new Vector3(1.93f, 4.33f, -1.15f), Quaternion.identity);
-            //Instantiate(cubeHolder, new Vector3(2.25f, 0.5f, -1.15f), cubeHolder.transform.rotation);
+            GameObject[] cubes = GameObject.FindGameObjectsWithTag("Cube");
+
+
+            foreach (GameObject cube in cubes)
+            {
+                Destroy(cube);
+
+            }
+            Debug.Log("Score : 0 Game Over !");
+            Instantiate(sphere, new Vector3(3.5f, 4.33f, -1.15f), Quaternion.identity);
+            Instantiate(genblo, new Vector3(3.850523f, 5.812638f, -0.6358458f), Quaternion.identity);
+            Instantiate(cubeHolder, new Vector3(3.78f, 0.5f, -1.15f), cubeHolder.transform.rotation);
         }
 
 

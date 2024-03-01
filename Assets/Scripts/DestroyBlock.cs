@@ -20,7 +20,7 @@ public class DestroyBlock : MonoBehaviour
     {
         if (collision.gameObject.tag == "sphere")
         {
-            Debug.Log("Delete this Block");
+            //Debug.Log("Delete this Block");
             Destroy(this.gameObject);
         }
 

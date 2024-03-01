@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class HolderCollision : MonoBehaviour
 {
@@ -15,36 +16,39 @@ public class HolderCollision : MonoBehaviour
     {
         
     }
-
+    int score = 0;
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Holder")
         {
-            Debug.Log("A Collision has been happened");
+            //Debug.Log("A Collision has been happened");
             this.GetComponent<Rigidbody>().AddForce(1, 700, 1);
         }
 
         
-        if (collision.gameObject.CompareTag("planA"))
+        if (collision.gameObject.CompareTag("planB"))
         {
             Debug.Log("A collision has occurred with the planB.");
+            this.GetComponent<Rigidbody>().AddForce(100, 200, 1);
 
-            // Calculate the opposite direction of the collision normal
-            Vector3 oppositeDirection = -collision.contacts[0].normal;
-
-            // Add a force in the opposite direction of the collision normal
-            GetComponent<Rigidbody>().AddForce(oppositeDirection * 600f);
+         
         }
         if (collision.gameObject.CompareTag("planA"))
         {
-            Debug.Log("A collision has occurred with the planB.");
-
-            // Calculate the opposite direction of the collision normal
-            Vector3 oppositeDirection = -collision.contacts[0].normal;
-
-            // Add a force in the opposite direction of the collision normal
-            GetComponent<Rigidbody>().AddForce(oppositeDirection * 600f);
+            Debug.Log("A collision has occurred with the planA.");
+            this.GetComponent<Rigidbody>().AddForce(-100, 200, 1);
+            
         }
-    
+
+
+
+        if (collision.gameObject.tag == "Cube")
+        {
+            score++;
+            Debug.Log("Votre Score : " + score);
+        }
+
+
+
     }
 }

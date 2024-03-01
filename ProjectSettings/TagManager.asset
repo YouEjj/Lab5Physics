@@ -10,6 +10,7 @@ TagManager:
   - planB
   - sphere
   - prinPlan
+  - gen
   layers:
   - Default
   - TransparentFX
